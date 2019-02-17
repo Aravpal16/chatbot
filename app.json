@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "thesquadai",
+    "slug": "thesquadai",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "thesquadait"
+    },
+    "android": {
+      "package": "demo.ai.thesquad",
+      "publishBundlePath": "android\\app\\src\\main\\assets\\shell-app.bundle",
+      "publishManifestPath": "android\\app\\src\\main\\assets\\shell-app-manifest.json"
+    },
+    "isDetached": true,
+    "detach": {
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.10.6-sdk32.0.0-83a07c97-312f-4bbf-8b19-5c609bc3c386.tar.gz"
+    },
+    "scheme": "expba1278e295fa46f1a3b020d8c42a98d6"
+  }
+}
