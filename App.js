@@ -1,7 +1,7 @@
-import React from 'react'
+mport React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     messages: [],
   }
@@ -11,11 +11,11 @@ class App extends React.Component {
       messages: [
         {
           _id: 1,
-          text: 'Hello developer',
+          text: 'Welcome',
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'React Native',
+            name: 'Watson Assistant',
             avatar: 'https://placeimg.com/140/140/any',
           },
         },
@@ -24,10 +24,49 @@ class App extends React.Component {
   }
 
   onSend(messages = []) {
+    console.log("messages "+ messages);
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
-    }))
+      connectWatson();
+    }));
   }
+
+ connectWatson(){
+ 
+    fetch("https://us-south.functions.cloud.ibm.com/api/v1/web/Paz%20Org_dev/default/inventoryapi.json", {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      input: messages[0],
+      
+    }),
+  }).then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState((previousState) => {
+          return {
+            messages: GiftedChat.append(previousState.messages, {
+              _id: Math.round(Math.random() * 1000000),
+              text: text,
+              createdAt: new Date(),
+              user:{
+                _id:2,
+                name:"Watson Assistant"
+              },
+            }),
+          }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+      })
+
+ }
+  
 
   render() {
     return (
