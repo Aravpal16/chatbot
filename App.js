@@ -27,11 +27,12 @@ export default class App extends React.Component {
     console.log("messages "+ messages);
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
-      connectWatson();
+      
     }));
+    this.connectWatson(messages);
   }
 
- connectWatson(){
+ connectWatson(messages) {
  
     fetch("https://us-south.functions.cloud.ibm.com/api/v1/web/Paz%20Org_dev/default/inventoryapi.json", {
     method: 'POST',
@@ -45,7 +46,7 @@ export default class App extends React.Component {
     }),
   }).then((response) => response.json())
       .then((responseJson) => {
-
+        var text = responseJson.response;
         this.setState((previousState) => {
           return {
             messages: GiftedChat.append(previousState.messages, {
@@ -76,6 +77,7 @@ export default class App extends React.Component {
         user={{
           _id: 1,
         }}
+        
       />
     )
   }
