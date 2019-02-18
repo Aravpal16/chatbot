@@ -1,4 +1,4 @@
-mport React from 'react'
+import React from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 
 export default class App extends React.Component {
