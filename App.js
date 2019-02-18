@@ -33,7 +33,11 @@ export default class App extends React.Component {
   }
 
  connectWatson(messages) {
- 
+    console.log(messages[0]);
+    console.log(JSON.stringify({
+      input: messages[0].text,
+      
+    }));
     fetch("https://us-south.functions.cloud.ibm.com/api/v1/web/Paz%20Org_dev/default/inventoryapi.json", {
     method: 'POST',
     headers: {
@@ -41,12 +45,19 @@ export default class App extends React.Component {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      input: messages[0],
+      input: messages[0].text,
       
     }),
-  }).then((response) => response.json())
+  }).then((response) => {
+    console.log(response);
+
+    var res = response.json();
+    return res;
+    })
       .then((responseJson) => {
+        console.log(responseJson);
         var text = responseJson.response;
+        console.log(text);
         this.setState((previousState) => {
           return {
             messages: GiftedChat.append(previousState.messages, {
