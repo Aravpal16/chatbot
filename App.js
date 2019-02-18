@@ -52,7 +52,7 @@ export default class App extends React.Component {
     console.log(response);
 
     var res = response.json();
-    return res;
+    return res["_bodyText"];
     })
       .then((responseJson) => {
         console.log(responseJson);
